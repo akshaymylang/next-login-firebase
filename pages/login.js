@@ -60,7 +60,7 @@ const Login = () => {
             </a>
           </div>
         )}
-        <button className="max-w-2xl mx-auto grid place-content-center h-10 w-full bg-red-100 text-black" onClick={() => handleGoogleLogin()}>Google login</button>
+        <button className="border-2 border-red-500 max-w-2xl mx-auto grid place-content-center h-10 p-4 mt-10 bg-red-100 text-black" onClick={() => handleGoogleLogin()}>Google login</button>
         <form
           onSubmit={handleSubmitData}
           className="max-w-2xl mx-auto grid place-content-center h-screen"
