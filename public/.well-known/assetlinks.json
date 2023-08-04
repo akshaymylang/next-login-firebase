@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.vercel.next_login_firebase.twa",
+        "sha256_cert_fingerprints": ["85:D4:4D:C2:0F:4A:49:30:12:8A:D1:46:49:F8:32:8A:C9:1A:EB:37:2D:D3:2F:52:13:13:38:90:E1:51:D4:57"]
+      }
+    }]
