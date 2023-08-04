@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/router";
 
 const Login = () => {
-  const { login, user } = useAuth();
+  const { login, user, googleLogin } = useAuth();
   const router = useRouter();
 
   const [data, setData] = useState({ email: " ", password: " " });
@@ -21,6 +21,7 @@ const Login = () => {
 
   async function handleSubmitData(e) {
     e.preventDefault();
+    console.log("Handle submit data")
 
     try {
       await login(data.email, data.password);
@@ -29,6 +30,16 @@ const Login = () => {
     } catch (err) {
       setError(err);
       console.error(err);
+    }
+  }
+
+  async function handleGoogleLogin() {
+    try {
+      const res = await googleLogin();
+      router.push("/")
+      console.log("Res", res)
+    } catch (err) {
+      console.log("Error while logging in through google", err)
     }
   }
 
@@ -49,6 +60,7 @@ const Login = () => {
             </a>
           </div>
         )}
+        <button className="max-w-2xl mx-auto grid place-content-center h-10 w-full bg-red-100 text-black" onClick={() => handleGoogleLogin()}>Google login</button>
         <form
           onSubmit={handleSubmitData}
           className="max-w-2xl mx-auto grid place-content-center h-screen"

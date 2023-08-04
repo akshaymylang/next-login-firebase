@@ -10,21 +10,20 @@ export default function Home() {
   const { user, logout } = useAuth();
   const router = useRouter();
 
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_GITHUB_REPO_URL}/repos`);
-      const data = await res.json();
-      setGithubRepos(data);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const res = await fetch(`${process.env.NEXT_PUBLIC_GITHUB_REPO_URL}/repos`);
+  //     const data = await res.json();
+  //     setGithubRepos(data);
 
-    }
-    fetchData();
-  }, [setGithubRepos]);
+  //   }
+  //   fetchData();
+  // }, [setGithubRepos]);
 
   return (
     <div className={styles.container}>
       <Head>
-        <title>Welcome {user.email.split('@')[0]}</title>
-        <meta name="description" content="created by @realtouseef on GitHub" />
+        <title>Welcome {user.displayName ?? "Demo User"}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -54,25 +53,11 @@ export default function Home() {
       </nav>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Check out projects of{" "}
-          <a
-           className="text-blue-700 cursor-pointer font-medium"
-          >
-        Touseef ibn Khaleel
-          </a>
+          Welcome { user.displayName }, you are now logged in!
         </h1>
 
         <div className={styles.grid}>
-          {githubRepos &&
-            githubRepos.map(({ id, html_url, name, description }) => (
-              <a target="_blank" rel="noreferrer noopener"  key={id} href={html_url} className={styles.card}>
-                <h2 className="font-medium">{name} &rarr;</h2>
-                <p>
-                  {description ??
-                    `Either this repo is forked or doesn't have a description`}
-                </p>
-              </a>
-            ))}
+
         </div>
       </main>
     </div>
